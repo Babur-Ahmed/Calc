@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import division #new
+from __future__ import division
 from Tkinter import *
 from math import *
 import webbrowser
@@ -202,7 +202,7 @@ Made by Babur Ahmed.
 
 root = Tk()
 
-# root.geometry('270x350')
+root.resizable(False, False)  #new - window resizing is disabled
 calcstart = Calculator(root)
 
 root.mainloop()
