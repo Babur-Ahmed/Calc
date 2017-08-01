@@ -126,6 +126,7 @@ class Calculator:
     @classmethod
     def mathtablegenwindow(cls):
         cls.tablerange = Tk()
+        cls.tablerange.resizable(False, False)
         cls.tablerange.wm_title('Math table range')
         cls.intlabel = Label(cls.tablerange, text='Integer')
         cls.intlabel.grid(row=0, column=0)
@@ -145,22 +146,27 @@ class Calculator:
 
     @classmethod
     def mathtablegen(cls):
-        cls.a = cls.intenter.get()
-        cls.b = cls.startrangein.get()
-        cls.c = cls.endrangein.get()
+        #To catch a display of an error in interpreter if user presses 'OK' button without inputting anything
+        try:
+            cls.a = cls.intenter.get()
+            cls.b = cls.startrangein.get()
+            cls.c = cls.endrangein.get()
 
-        cls.mathtablewin = Tk()
-        cls.mathtablewin.wm_title('Math Tables')
-        cls.n1 = int(cls.a)
-        cls.n2 = int(cls.b)
-        cls.n3 = int(cls.c)
-        cls.output = ''
-        for x in range(cls.n2, (cls.n3 + 1), 1):
-            cls.ha = cls.n1 * x
-            cls.output = cls.output + "{0} * {1} = {2}\n".format(cls.n1, x, cls.ha)
-        mathtab = Label(cls.mathtablewin, text=cls.output)
-        mathtab.pack()
-        cls.mathtablewin.mainloop()
+            cls.mathtablewin = Tk()
+            cls.mathtablewin.wm_title('Math Tables')
+            cls.n1 = int(cls.a)
+            cls.n2 = int(cls.b)
+            cls.n3 = int(cls.c)
+            cls.output = ''
+            for x in range(cls.n2, (cls.n3 + 1), 1):
+                cls.ha = cls.n1 * x
+                cls.output = cls.output + "{0} * {1} = {2}\n".format(cls.n1, x, cls.ha)
+            mathtab = Label(cls.mathtablewin, text=cls.output)
+            mathtab.pack()
+            cls.mathtablewin.mainloop()
+        except ValueError:
+            cls.mathtablewin.destroy()
+            pass
 
     @classmethod
     def webevent(cls, event):
@@ -202,7 +208,7 @@ Made by Babur Ahmed.
 
 root = Tk()
 
-root.resizable(False, False)  #new - window resizing is disabled
+root.resizable(False, False)
 calcstart = Calculator(root)
 
 root.mainloop()
