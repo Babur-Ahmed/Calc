@@ -11,7 +11,6 @@ import webbrowser
 TODO:
 Create a calculator with a complete graphic user interface (GUI).
 Calculator must have the following functionality:
-
 1- Performance of all arithmetic operations.
 2- Addition, subtraction, multiplication and division functions.
 3- Square root, cube root, cubes, squares and decimals.
@@ -113,15 +112,23 @@ class Calculator:
 
     @classmethod
     def evalonreturn(cls, event):
-        cls.result = eval(cls.resultbox.get())
-        cls.resultbox.delete(0, END)
-        cls.resultbox.insert(END, cls.result)
+        # Annoying error catch when nothing is input
+        if (cls.resultbox.get() == ''):
+            pass
+        else:
+            cls.result = eval(cls.resultbox.get())
+            cls.resultbox.delete(0, END)
+            cls.resultbox.insert(END, cls.result)
 
     @classmethod
     def evalonequals(cls):
-        cls.resultequals = eval(cls.resultbox.get())
-        cls.resultbox.delete(0, END)
-        cls.resultbox.insert(END, cls.resultequals)
+        # Annoying error catch when nothing is input
+        if (cls.resultbox.get() == ''):
+            pass
+        else:
+            cls.resultequals = eval(cls.resultbox.get())
+            cls.resultbox.delete(0, END)
+            cls.resultbox.insert(END, cls.resultequals)
 
     @classmethod
     def mathtablegenwindow(cls):
@@ -183,7 +190,6 @@ built-in python math module, giving it more
 accessibilty to mathematical functions.
 The proper syntax should merely be entered in
 the input box for your expressions to be evaluated.
-
 Documentation for the module can be found at:''', justify='left')
         cls.about_label1.grid(row=0, column=0)
         cls.weblink = Label(
@@ -197,8 +203,6 @@ function. Do not input any rogue code in the entry
 box for the sake of your machine. Use at your
 own risk.
 -------------------------------------
-
-
 Made by Babur Ahmed.
 16th July, 2017
         ''', justify=LEFT)
@@ -212,5 +216,4 @@ root.resizable(False, False)
 calcstart = Calculator(root)
 
 root.mainloop()
-
 
