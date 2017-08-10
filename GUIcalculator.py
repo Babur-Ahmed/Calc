@@ -112,23 +112,29 @@ class Calculator:
 
     @classmethod
     def evalonreturn(cls, event):
-        # Annoying error catch when nothing is input
-        if (cls.resultbox.get() == ''):
+        # Error catch when nothing is input
+        try:
+            if (cls.resultbox.get() == ''):
+                pass
+            else:
+                cls.result = eval(cls.resultbox.get())
+                cls.resultbox.delete(0, END)
+                cls.resultbox.insert(END, cls.result)
+        except SyntaxError:
             pass
-        else:
-            cls.result = eval(cls.resultbox.get())
-            cls.resultbox.delete(0, END)
-            cls.resultbox.insert(END, cls.result)
 
     @classmethod
     def evalonequals(cls):
-        # Annoying error catch when nothing is input
-        if (cls.resultbox.get() == ''):
+        # Error catch when nothing is input
+        try:
+            if (cls.resultbox.get() == ''):
+                pass
+            else:
+                cls.resultequals = eval(cls.resultbox.get())
+                cls.resultbox.delete(0, END)
+                cls.resultbox.insert(END, cls.resultequals)
+        except SyntaxError:
             pass
-        else:
-            cls.resultequals = eval(cls.resultbox.get())
-            cls.resultbox.delete(0, END)
-            cls.resultbox.insert(END, cls.resultequals)
 
     @classmethod
     def mathtablegenwindow(cls):
